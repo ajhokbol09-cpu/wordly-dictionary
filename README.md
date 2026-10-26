@@ -86,7 +86,7 @@ wordly-spa/
 
 ## Author
 
-Add your name here.
+** Ajhok Bol**.
 
 ## License
 
