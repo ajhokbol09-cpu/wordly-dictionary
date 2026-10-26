@@ -1,0 +1,444 @@
+/* South Sudan flag colors */
+:root {
+    --flag-black: #000000;
+    --flag-red: #da121a;
+    --flag-green: #078930;
+    --flag-blue: #0f47af;
+    --flag-yellow: #fcde02;
+    --flag-white: #ffffff;
+    --page: #071426;
+    --header: #0f47af;
+    --panel: #101c30;
+    --panel-raised: #0b1c36;
+    --line: #43516a;
+    --text: var(--flag-white);
+    --muted: #d6deeb;
+}
+
+body,
+body * {
+    text-align: left;
+    font-style: italic;
+}
+
+/* Basic page styling */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background: var(--page);
+    background-image:
+        radial-gradient(ellipse at 8% 18%, rgb(218 18 26 / 14%), transparent 34%),
+        radial-gradient(ellipse at 88% 72%, rgb(7 137 48 / 14%), transparent 36%),
+        linear-gradient(135deg, rgb(15 71 175 / 18%), transparent 58%);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    text-align: left;
+}
+
+/* Header */
+.header {
+    position: relative;
+    padding: 24px 20px;
+    background: linear-gradient(110deg, var(--flag-black), var(--header) 72%);
+    text-align: left;
+}
+
+.header::before {
+    position: absolute;
+    inset: 0 0 auto;
+    height: 6px;
+    background: linear-gradient(
+        to bottom,
+        var(--flag-black) 0 18%,
+        var(--flag-red) 18% 39%,
+        var(--flag-white) 39% 45%,
+        var(--flag-green) 45% 66%,
+        var(--flag-white) 66% 72%,
+        var(--flag-blue) 72% 90%,
+        var(--flag-yellow) 90% 100%
+    );
+    content: "";
+}
+
+.logo {
+    margin: 0;
+    font-size: 35px;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--flag-yellow);
+}
+
+.header p {
+    margin: 4px 0 0;
+    color: var(--muted);
+}
+
+/* Main content */
+.container {
+    width: min(900px, 90%);
+    flex: 1;
+    margin: 32px auto;
+}
+
+/* Search form */
+.search-section {
+    margin-bottom: 34px;
+    text-align: left;
+}
+
+.search-section h2 {
+    margin: 0 0 6px;
+    font-size: 30px;
+}
+
+.search-section > p {
+    margin: 0 0 18px;
+    color: var(--muted);
+}
+
+#search-form {
+    margin-top: 22px;
+    text-align: left;
+}
+
+#search-form label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+}
+
+#word-input {
+    min-width: 0;
+    flex: 1;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--panel);
+    color: var(--flag-white);
+    font: inherit;
+}
+
+#word-input::placeholder {
+    color: #d6deeb;
+}
+
+#word-input:focus-visible {
+    outline: 2px solid var(--flag-yellow);
+    outline-offset: 2px;
+}
+
+/* Buttons and keyboard focus */
+button {
+    padding: 11px 17px;
+    border: 0;
+    border-radius: 6px;
+    background: var(--flag-blue);
+    color: var(--flag-white);
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 150ms ease, transform 150ms ease;
+}
+
+button:hover {
+    background: var(--flag-red);
+    transform: translateY(-1px);
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--flag-yellow);
+    outline-offset: 3px;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+}
+
+button[hidden] {
+    display: none;
+}
+
+#theme-button {
+    display: block;
+    margin-top: 10px;
+    padding: 7px 11px;
+    font-size: 13px;
+}
+
+/* Search status and errors */
+#message {
+    min-height: 1.6em;
+    margin: 12px 0 0;
+    color: var(--flag-yellow);
+}
+
+#message:empty {
+    display: none;
+}
+
+/* Dictionary result */
+#results-section {
+    margin-bottom: 32px;
+}
+
+.word-heading {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+}
+
+#word-title {
+    margin: 0;
+    font-size: 32px;
+    overflow-wrap: anywhere;
+}
+
+#phonetic {
+    margin: 4px 0 0;
+    color: var(--flag-yellow);
+}
+
+#definitions-container {
+    display: grid;
+    gap: 12px;
+}
+
+#definitions-container > h3 {
+    margin: 12px 0 0;
+    color: var(--flag-green);
+    font-size: 19px;
+    text-transform: capitalize;
+}
+
+.definition-card {
+    padding: 17px;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--flag-red);
+    border-radius: 7px;
+    background: var(--panel);
+    overflow-wrap: anywhere;
+}
+
+.definition-card p {
+    margin: 0;
+}
+
+.definition-card p + p {
+    margin-top: 9px;
+}
+
+.definition-card .example {
+    color: var(--muted);
+    font-style: italic;
+}
+
+/* Synonyms */
+.synonyms-section {
+    margin-top: 22px;
+}
+
+.synonyms-section h3 {
+    margin: 0 0 8px;
+    color: var(--flag-green);
+}
+
+#synonyms-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.synonym {
+    display: inline-block;
+    padding: 4px 10px;
+    border: 1px solid var(--flag-yellow);
+    border-radius: 16px;
+    background: var(--flag-blue);
+    color: var(--flag-white);
+    font-size: 14px;
+}
+
+/* Audio, save, and source */
+#audio-button,
+#save-button {
+    margin-top: 12px;
+}
+
+#audio-button {
+    flex: 0 0 auto;
+}
+
+#save-button.saved {
+    background: var(--flag-green);
+}
+
+#source-link {
+    margin: 18px 0 0;
+    color: var(--muted);
+    overflow-wrap: anywhere;
+}
+
+#source-link a {
+    color: var(--flag-yellow);
+}
+
+/* Saved words */
+.saved-section {
+    margin-top: 36px;
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--panel-raised);
+}
+
+.saved-section h2 {
+    margin: 0 0 5px;
+}
+
+.saved-section p {
+    margin: 0 0 14px;
+    color: var(--muted);
+}
+
+#saved-words-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#saved-words-list li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
+}
+
+#saved-words-list li.empty-state {
+    display: block;
+    color: var(--muted);
+}
+
+#saved-words-list button:first-child {
+    background: var(--flag-blue);
+}
+
+#saved-words-list button:first-child:hover {
+    background: var(--flag-green);
+}
+
+#saved-words-list button:last-child {
+    background: var(--flag-black);
+    border: 1px solid #64748b;
+}
+
+#saved-words-list button:last-child:hover {
+    background: var(--flag-red);
+}
+
+/* Footer */
+.footer {
+    margin-top: auto;
+    padding: 18px;
+    color: var(--muted);
+    text-align: left;
+}
+
+.footer p {
+    margin: 0;
+}
+
+/* Keep the South Sudan accents in the optional light theme too. */
+body.light-theme {
+    --page: #f5f5f5;
+    --header: #0f47af;
+    --panel: #ffffff;
+    --panel-raised: #e9eef7;
+    --line: #b7c2d3;
+    --text: #172033;
+    --muted: #39475d;
+}
+
+body.light-theme #word-input {
+    color: #172033;
+    background: var(--flag-white);
+}
+
+body.light-theme #word-input::placeholder {
+    color: #64748b;
+}
+
+body.light-theme .definition-card {
+    border-left-color: var(--flag-red);
+}
+
+body.light-theme .synonym {
+    color: var(--flag-white);
+}
+
+body.light-theme #saved-words-list button:last-child {
+    color: var(--flag-white);
+}
+
+/* Small screens */
+@media (max-width: 600px) {
+    .container {
+        width: 92%;
+        margin: 24px auto;
+    }
+
+    .search-section h2 {
+        font-size: 26px;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    #word-input,
+    .search-box button {
+        width: 100%;
+    }
+
+    .word-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    #word-title {
+        font-size: 28px;
+    }
+
+    .saved-section {
+        padding: 16px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
